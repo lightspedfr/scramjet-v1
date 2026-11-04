@@ -15,7 +15,7 @@ def identical_aggressive_obfuscate(root_dir="."):
         "baremux": generate_valid_js_identifier(),
         "bare-mux": generate_valid_js_identifier(),
         "bare": generate_valid_js_identifier(),
-        "mercuryworkshop": generate_valid_js_identifier(),
+        "transport": generate_valid_js_identifier(),
     }
     
     sorted_keywords = sorted(unified_token_registry.keys(), key=len, reverse=True)
