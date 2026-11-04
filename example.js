@@ -74,11 +74,11 @@ form.addEventListener("submit", async (event) => {
 
 	let wispUrl = "wss://wisp.mercurywork.shop/";
 	try {
-		await connection.setTransport("/libcurl/index.mjs", [
+		await connection.__05086("/libcurl/index.mjs", [
 			{ websocket: wispUrl },
 		]);
-	} catch (transportError) {
-		console.error("error:", transportError);
+	} catch (__05086Error) {
+		console.error("error:", __05086Error);
 	}
 
 	
