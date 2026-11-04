@@ -1,0 +1,55 @@
+name: Run Python Script and Commit Changes
+
+on:
+  # Triggers the workflow every time you push to the main branch
+  push:
+    branches:
+      - main
+  # Allows you to manually trigger this workflow from the GitHub Actions tab
+  workflow_dispatch:
+
+# Grant write permissions so the runner can push commits back to the repo
+permissions:
+  contents: write
+
+jobs:
+  run-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the repository content
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up the Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' # Change to your preferred Python version
+
+      # 3. Optional: Install dependencies (Uncomment if your script needs external packages)
+      # - name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # 4. Execute your Python script
+      - name: Run Python script
+        run: python obfuscator.py # Replace with your script's filename
+
+      # 5. Check for changes, commit, and push them
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Stage all modified and new files
+          git add .
+          
+          # Only commit if there are actual changes to prevent workflow errors
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: automated file updates from python script"
+            git push
+          else
+            echo "No changes detected. Skipping commit."
+          fi
