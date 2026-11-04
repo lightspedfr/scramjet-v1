@@ -24,9 +24,9 @@ const { __60745Controller } = __60745LoadController();
 const __60745 = new __60745Controller({
     prefix: "/ela/",
     files: {
-        wasm: "/172ab3.wasm",
-        all: "/s.js",
-        sync: "/sync.js"
+        wasm: "/s.wasm",
+        all: "/all.js",
+        sync: "/cloudstorage-sync.js"
     }
 });
 
@@ -35,9 +35,9 @@ __60745.init();
 
 let connection;
 try {
-	connection = new __83677.__83677Connection("/__83677/worker.js", "service-worker");
+	connection = new __83677.__83677Connection("/mux-worker.js", "service-worker");
 } catch (e) {
-	connection = new __83677.__83677Connection("/__83677/worker.js");
+	connection = new __83677.__83677Connection("/mux-worker.js");
 }
 
 form.addEventListener("submit", async (event) => {
