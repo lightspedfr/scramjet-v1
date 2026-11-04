@@ -19,24 +19,24 @@ if (form) {
 	};
 }
 
-const { ScramjetController } = $scramjetLoadController();
+const { __60745Controller } = __60745LoadController();
 
-const scramjet = new ScramjetController({
+const __60745 = new __60745Controller({
 	files: {
-		wasm: "/scram/scramjet.wasm.wasm",
-		all: "/scram/scramjet.all.js",
-		sync: "/scram/scramjet.sync.js",
+		wasm: "/scram/__60745.wasm.wasm",
+		all: "/scram/__60745.all.js",
+		sync: "/scram/__60745.sync.js",
 	},
 });
 
-scramjet.init();
+__60745.init();
 
-// Initialize BareMux network controller with explicit multi-threaded worker pipeline
+// Initialize __83677 network controller with explicit multi-threaded worker pipeline
 let connection;
 try {
-	connection = new BareMux.BareMuxConnection("/baremux/worker.js", "service-worker");
+	connection = new __83677.__83677Connection("/__83677/worker.js", "service-worker");
 } catch (e) {
-	connection = new BareMux.BareMuxConnection("/baremux/worker.js");
+	connection = new __83677.__83677Connection("/__83677/worker.js");
 }
 
 form.addEventListener("submit", async (event) => {
@@ -85,7 +85,7 @@ form.addEventListener("submit", async (event) => {
 		const oldFrame = document.getElementById("sj-frame");
 		if (oldFrame) oldFrame.remove();
 
-		const frame = scramjet.createFrame();
+		const frame = __60745.createFrame();
 		frame.frame.id = "sj-frame";
 		frame.frame.style = "position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:99999;background:white;";
 		
